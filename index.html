@@ -7,215 +7,232 @@
 <meta name="theme-color" content="#F4ECE4">
 <meta name="description" content="香山國小數位校刊：班級與處室的校園點滴">
 <title>香山國小數位校刊</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css">
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js" defer></script>
 <style>
-:root{--bg:#F4ECE4;--ink:#3d312e;--dk:#7A635E;--tp:#B4968F;--pk:#F58595;--lt:#E8DEDC;--mute:#6f5d58}
-*{box-sizing:border-box}[hidden]{display:none!important}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;min-height:100dvh;padding-bottom:calc(72px + env(safe-area-inset-bottom))}
+:root{--bg:#F4ECE4;--ink:#3d312e;--dk:#7A635E;--tp:#B4968F;--pk:#F58595;--lt:#E8DEDC;--mute:#6f5d58;--serif:"Noto Serif TC","Songti TC","PMingLiU",serif}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;min-height:100dvh;padding-bottom:calc(104px + env(safe-area-inset-bottom))}
 :focus-visible{outline:3px solid var(--pk);outline-offset:2px}
-header{position:sticky;top:0;z-index:20;background:rgba(244,236,228,.94);backdrop-filter:blur(8px);padding:calc(10px + env(safe-area-inset-top)) 16px 10px;display:flex;gap:10px 16px;align-items:center;flex-wrap:wrap}
-h1{margin:0 auto 0 0;font-size:1.2rem;letter-spacing:.08em;color:var(--dk)}
-.sb{width:44px;height:44px;border:0;border-radius:50%;background:#fff;color:var(--dk);display:grid;place-items:center;box-shadow:0 1px 3px rgba(122,99,94,.15)}
-#sp{flex-basis:100%;display:flex;align-items:center;gap:8px}
-#q{flex:1;min-width:0;border:0;background:#fff;border-radius:999px;padding:0 18px;font:inherit;color:var(--ink);min-height:44px;box-shadow:inset 0 0 0 1px var(--lt)}
-#sx{border:0;background:none;color:var(--dk);font:inherit;min-height:44px;padding:0 6px}
-nav{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;background:#fff;border-top:1px solid var(--lt);padding-bottom:env(safe-area-inset-bottom)}
-nav button{flex:1;min-height:56px;border:0;background:none;font:inherit;font-size:12px;color:var(--mute);padding:0 2px}
-nav button[aria-current=true]{color:var(--dk);font-weight:700;box-shadow:inset 0 3px 0 var(--pk)}
-main,footer{max-width:960px;margin:0 auto;padding:4px 16px}
-h2{font-size:1.05rem;margin:22px 0 10px;color:var(--dk)}
-.grid{display:grid;gap:12px;grid-template-columns:1fr}
-.card{display:flex;gap:12px;background:#fff;border:1px solid #efe5de;border-radius:16px;padding:10px;text-decoration:none;color:inherit;min-height:96px}
-.card:active{transform:scale(.985)}
-.ph{position:relative;width:88px;height:88px;flex:none;border-radius:10px;overflow:hidden;background:var(--lt)}
-.ph img{width:100%;height:100%;object-fit:cover;display:block}
-i.pl{position:absolute;inset:0;display:grid;place-items:center;color:#fff;background:rgba(0,0,0,.28);font-style:normal}
-.tx{min-width:0;display:flex;flex-direction:column;gap:4px}
-.tx b{line-height:1.35;overflow-wrap:anywhere}.tx small{color:var(--mute)}
-.tag{align-self:flex-start;font-size:12px;background:var(--lt);color:#5f4b46;padding:1px 10px;border-radius:999px}
-.chips{display:flex;gap:8px;overflow-x:auto;padding:8px 0;scrollbar-width:none}
-.chips::-webkit-scrollbar{display:none}
-.chips button{flex:none;border:1px solid var(--lt);background:#fff;border-radius:999px;padding:8px 16px;font:inherit;font-size:14px;color:var(--ink);min-height:40px}
-.chips button[aria-pressed=true]{background:var(--dk);color:#fff;border-color:var(--dk)}
-.pick{margin:12px 0}.pick label{display:block;font-size:14px;color:var(--mute);margin-bottom:4px}
-.pick select{width:100%;max-width:320px;min-height:44px;border:1px solid var(--lt);border-radius:12px;background:#fff;font:inherit;padding:0 12px;color:var(--ink)}
-.lnk{border:0;background:none;color:var(--dk);font:inherit;text-decoration:underline;min-height:44px;padding:0}
-.empty{text-align:center;color:var(--mute);padding:40px 0}
-#art{position:fixed;inset:0;z-index:40;background:var(--bg);overflow-y:auto;overscroll-behavior:contain}
-.bar{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;padding:calc(8px + env(safe-area-inset-top)) 12px 8px;background:rgba(244,236,228,.94);backdrop-filter:blur(8px)}
-.bar button{min-height:44px;min-width:44px;border:0;border-radius:999px;background:#fff;color:var(--dk);font:inherit;font-weight:700;padding:0 16px}
-#art article{max-width:760px;margin:0 auto;padding:8px 16px calc(40px + env(safe-area-inset-bottom))}
-#art h2{font-size:1.5rem;line-height:1.35;margin:10px 0 4px;color:var(--dk)}
-.meta{margin:0 0 14px;color:var(--mute);font-size:14px}
-.hero{position:relative;display:block;margin:12px 0;border-radius:14px;overflow:hidden;background:var(--lt);min-height:120px}
-.hero img{width:100%;height:auto;display:block}
-.body{white-space:pre-wrap;overflow-wrap:anywhere;margin:16px 0;font-size:1.0625rem;line-height:1.9}
-.thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:16px}
-.thumbs a{position:relative;aspect-ratio:1;border-radius:8px;overflow:hidden;background:var(--lt)}
-.thumbs img{width:100%;height:100%;object-fit:cover;display:block}
-footer{color:var(--mute);font-size:13px;text-align:center;padding:24px 16px}.adm{display:none}
-#toast{position:fixed;left:50%;bottom:calc(88px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--dk);color:#fff;padding:10px 18px;border-radius:999px;z-index:60}
-@media(hover:hover){.card:hover{box-shadow:0 6px 18px rgba(122,99,94,.15)}}
-@media(min-width:640px){.grid{grid-template-columns:1fr 1fr}.thumbs{grid-template-columns:repeat(4,1fr)}}
-@media(min-width:768px){body{padding-bottom:24px}nav{position:static;max-width:960px;margin:0 auto;border:0;background:none}nav button{font-size:15px;min-height:48px}.adm{display:inline}}
-@media(min-width:960px){.grid{grid-template-columns:repeat(3,1fr)}}
+button{font:inherit;color:inherit;cursor:pointer}
+main{max-width:1040px;margin:0 auto;padding:0 16px}
+.mast{padding:calc(28px + env(safe-area-inset-top)) 4px 14px}
+.mast h1{margin:0;font:700 2.15rem/1.18 var(--serif);color:var(--dk);letter-spacing:.04em}
+.mast p{margin:8px 0 0;color:var(--mute);font-size:14px}
+.bar2{position:sticky;top:0;z-index:15;margin:0 -16px;padding:calc(6px + env(safe-area-inset-top)) 16px 8px;background:rgba(244,236,228,.92);backdrop-filter:blur(10px)}
+.row{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}.row::-webkit-scrollbar{display:none}
+.mt button{flex:none;border:0;background:none;padding:10px 12px;min-height:44px;color:var(--mute);font-weight:500;position:relative}
+.mt button[aria-pressed=true]{color:var(--dk);font-weight:700}
+.mt button[aria-pressed=true]::after{content:"";position:absolute;left:12px;right:12px;bottom:4px;height:3px;border-radius:3px;background:var(--pk)}
+.sbr{padding-top:4px}.sbr button{flex:none;border:0;background:#fff;border-radius:999px;padding:6px 14px;min-height:36px;font-size:14px;color:var(--ink)}
+.sbr button[aria-pressed=true]{background:var(--dk);color:#fff}
+.hero{position:relative;display:block;margin:10px 0 18px;border-radius:26px;overflow:hidden;aspect-ratio:4/5;max-height:70dvh;background:var(--lt);color:#fff;text-decoration:none}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .sh{position:absolute;left:0;right:0;bottom:0;padding:72px 20px 22px;background:linear-gradient(to top,rgba(40,28,25,.78),rgba(40,28,25,0))}
+.hero h2{margin:8px 0 4px;font:700 1.6rem/1.3 var(--serif);overflow-wrap:anywhere}.hero small{opacity:.9}
+.tg{display:inline-block;font-size:12px;background:rgba(255,255,255,.92);color:#5f4b46;padding:2px 11px;border-radius:999px}
+.mas{columns:2;column-gap:12px}
+.c{display:block;break-inside:avoid;margin:0 0 14px;text-decoration:none;color:inherit}
+.c .im{position:relative;border-radius:18px;overflow:hidden;background:var(--lt)}
+.c .im img{width:100%;height:100%;object-fit:cover;display:block}
+.c .tx{padding:8px 4px 0}.c b{display:block;font:600 .98rem/1.4 var(--serif);overflow-wrap:anywhere}
+.c small{color:var(--mute);font-size:13px}.c .tx .tg{background:var(--lt);margin-bottom:4px}
+.c.t{border-radius:18px;padding:18px 16px;min-height:150px;display:flex;flex-direction:column;justify-content:space-between}
+.c.t b{font-size:1.1rem}.c.t .tg{background:rgba(255,255,255,.7);align-self:flex-start}
+i.pl{position:absolute;right:10px;top:10px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.45);color:#fff;display:grid;place-items:center;font-style:normal;font-size:12px}
+.more{display:block;margin:6px auto 0;border:0;border-radius:999px;background:#fff;padding:0 28px;min-height:46px;color:var(--dk);font-weight:700}
+.empty{text-align:center;color:var(--mute);padding:48px 0}
+.pick{margin:6px 0 18px}.pick label{display:block;font-size:14px;color:var(--mute);margin-bottom:6px}
+.pick select{width:100%;max-width:340px;min-height:48px;border:0;border-radius:14px;background:#fff;padding:0 14px;font:inherit;color:var(--ink)}
+nav{position:fixed;z-index:30;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom));width:min(92%,340px);display:flex;padding:6px;border-radius:999px;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);box-shadow:0 8px 28px rgba(90,64,58,.2)}
+nav button{flex:1;border:0;background:none;border-radius:999px;min-height:50px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;font-size:12px;color:var(--mute)}
+nav button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+nav button[aria-current=true]{background:var(--lt);color:var(--dk);font-weight:700}
+#sv{position:fixed;inset:0;z-index:50;background:var(--bg);overflow-y:auto;overscroll-behavior:contain;padding:calc(14px + env(safe-area-inset-top)) 16px 120px}
+#sv .top{display:flex;gap:8px;align-items:center;max-width:1040px;margin:0 auto 14px}
+#q{flex:1;min-width:0;border:0;background:#fff;border-radius:999px;padding:0 20px;min-height:50px;font:inherit;color:var(--ink)}
+#sx{border:0;background:none;color:var(--dk);min-height:44px;padding:0 6px}
+#sr{max-width:1040px;margin:0 auto}
+#art{position:fixed;inset:0;z-index:60;background:var(--bg);overflow-y:auto;overscroll-behavior:contain}
+.ab{position:sticky;top:0;height:0;z-index:3}
+.ab button{position:absolute;top:calc(12px + env(safe-area-inset-top));width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.82);backdrop-filter:blur(8px);color:var(--dk);font-size:20px;font-weight:700}
+#close{left:14px}#share{right:14px}
+.ah{display:block;aspect-ratio:4/5;max-height:72dvh;background:var(--lt);overflow:hidden}.ah img{width:100%;height:100%;object-fit:cover;display:block}
+#art article{position:relative;max-width:760px;margin:-30px auto 0;padding:26px 22px calc(48px + env(safe-area-inset-bottom));background:var(--bg);border-radius:30px 30px 0 0}
+#art article.nh{margin-top:64px;border-radius:0}
+#art h2{margin:10px 0 6px;font:700 1.75rem/1.35 var(--serif);color:var(--dk);overflow-wrap:anywhere}
+.meta{margin:0 0 18px;color:var(--mute);font-size:14px}
+#art .tg{background:var(--lt)}
+.body{white-space:pre-wrap;overflow-wrap:anywhere;font-size:1.0625rem;line-height:2;margin:0 0 22px}
+.mg{columns:2;column-gap:8px}
+.mg a{position:relative;display:block;margin-bottom:8px;border-radius:14px;overflow:hidden;background:var(--lt);min-height:110px;break-inside:avoid}
+.mg img{width:100%;height:auto;display:block}
+#toast{position:fixed;left:50%;bottom:calc(100px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--dk);color:#fff;padding:10px 18px;border-radius:999px;z-index:90}
+.adm{display:none;text-align:center;font-size:13px;margin-top:28px}.adm a{color:var(--mute)}
+@media(hover:hover){.c:hover .im,.hero:hover{filter:brightness(.97)}}
+@media(min-width:760px){.mas{columns:3}.mast h1{font-size:2.6rem}.adm{display:block}.mg{columns:3}}
+@media(min-width:1000px){.mas{columns:4}}
 </style>
 </head>
 <body>
-<header><h1>香山國小數位校刊</h1>
-<button class="sb" id="sbtn" aria-label="搜尋"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
-<div id="sp" hidden><input id="q" type="search" placeholder="搜尋標題、作者、班級" enterkeyhint="search" aria-label="搜尋"><button id="sx">取消</button></div></header>
-<nav id="nav" aria-label="分類"></nav>
-<main id="app"><p class="empty">載入中…</p></main>
-<footer>香山國小數位校刊　<a class="adm" href="https://script.google.com/a/macros/tmail.hc.edu.tw/s/AKfycbyirrh5kS5_rp8bgyqts7ciy_PaLOBgiK84H7WaAVtnYs1OkCT3c_Kdn57diJFt_B-2/exec" target="_blank" rel="noopener">教師後台</a></footer>
+<main id="app"></main>
+<nav id="nav" aria-label="主選單">
+<button data-t="home" aria-label="首頁"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>首頁</button>
+<button data-t="search" aria-label="搜尋"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>搜尋</button>
+<button data-t="mine" aria-label="我的班級"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.5l-5.4 3 1.2-6L3.3 9.3l6.1-.7z"/></svg>我的班級</button>
+</nav>
+<div id="sv" hidden><div class="top"><input id="q" type="search" placeholder="搜尋標題、作者、班級" enterkeyhint="search" aria-label="搜尋"><button id="sx">取消</button></div><div id="sr"></div></div>
 <div id="art" hidden></div>
 <script>
 var API='https://script.google.com/macros/s/AKfycbx0WYcfguRrU0oj-BMRjnwrz6LySteDiy7ZMuF4WnaoKFJoqtL3nF3Bpe0M7bm2PG9Z/exec?api=true';
-var CATAPI=API.replace('api=true','api=categories');
-var $=function(s){return document.querySelector(s)};
-var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})};
-var lsGet=function(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}};
-var lsSet=function(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
-var A=[],C={order:[],map:{}},st={main:'home',sub:'',q:''},feedN=12,loaded=false;
+var CATAPI=API.replace('api=true','api=categories'),ADMIN='https://script.google.com/a/macros/tmail.hc.edu.tw/s/AKfycbyirrh5kS5_rp8bgyqts7ciy_PaLOBgiK84H7WaAVtnYs1OkCT3c_Kdn57diJFt_B-2/exec';
+var $=s=>document.querySelector(s);
+var esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+var lsGet=k=>{try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}};
+var lsSet=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+var A=[],C={order:[],map:{}},st={main:'',sub:'',tab:'home'},N=20,loaded=false;
+var TINTS=['#E8DEDC','#E3E0D3','#DCE2DE','#EADFCF','#E6D6D3'],RATIO=['4/5','1/1','5/6'];
 
 function media(g){
-  return String(g||'').split(/[\n,]+/).map(function(u){return u.split('|||')[0].trim()}).filter(Boolean).map(function(u){
+  return String(g||'').split(/[\n,]+/).map(u=>u.split('|||')[0].trim()).filter(Boolean).map(u=>{
     var m=u.match(/youtu(?:\.be\/|be\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/))([\w-]{11})/);
     if(m)return{yt:1,thumb:'https://img.youtube.com/vi/'+m[1]+'/hqdefault.jpg',full:'https://www.youtube.com/watch?v='+m[1]};
     m=u.match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?(?:.*&)?id=)([\w-]{10,})/);
     if(!m)return null;
     var b='https://lh3.googleusercontent.com/d/'+m[1];
-    return{thumb:b+'=w400',mid:b+'=w900',full:b+'=w1600'};
+    return{thumb:b+'=w500',mid:b+'=w1000',full:b+'=w1600'};
   }).filter(Boolean);
 }
+var uniq=(v,i,r)=>v&&r.indexOf(v)===i;
 function mains(){
-  var have=A.map(function(a){return a.main_category}).filter(function(v,i,r){return v&&r.indexOf(v)===i});
-  var ord=C.order.filter(function(m){return have.indexOf(m)>=0});
-  return ord.concat(have.filter(function(m){return ord.indexOf(m)<0}));
+  var have=A.map(a=>a.main_category).filter(uniq),ord=C.order.filter(m=>have.indexOf(m)>=0);
+  return ord.concat(have.filter(m=>ord.indexOf(m)<0));
 }
 function subsOf(main){
-  var have=A.filter(function(a){return a.main_category===main&&a.sub_category}).map(function(a){return a.sub_category}).filter(function(v,i,r){return r.indexOf(v)===i});
-  var ord=(C.map[main]||[]).filter(function(s){return have.indexOf(s)>=0});
-  return ord.concat(have.filter(function(s){return ord.indexOf(s)<0}));
+  var have=A.filter(a=>a.main_category===main).map(a=>a.sub_category).filter(uniq),ord=(C.map[main]||[]).filter(s=>have.indexOf(s)>=0);
+  return ord.concat(have.filter(s=>ord.indexOf(s)<0));
 }
-function card(a){
-  var m=media(a.gallery)[0];
-  return '<a class="card" href="#/a/'+esc(a.id)+'" data-id="'+esc(a.id)+'">'+
-    (m?'<div class="ph"><img loading="lazy" decoding="async" src="'+m.thumb+'" alt="">'+(m.yt?'<i class="pl">▶</i>':'')+'</div>':'')+
-    '<div class="tx"><span class="tag">'+esc(a.sub_category||a.main_category)+'</span><b>'+esc(a.title||'（未命名）')+'</b>'+(a.author?'<small>作者 '+esc(a.author)+'</small>':'')+'</div></a>';
-}
-var grid=function(l){return '<div class="grid">'+l.map(card).join('')+'</div>'};
-var empty=function(t){return '<p class="empty">'+t+'</p>'};
-function pickHtml(mine){
-  var h='<select id="mine" aria-label="我的班級"><option value="">請選擇</option>';
-  mains().forEach(function(m){h+='<optgroup label="'+esc(m)+'">'+subsOf(m).map(function(s){return '<option value="'+esc(s)+'"'+(s===mine?' selected':'')+'>'+esc(s)+'</option>'}).join('')+'</optgroup>'});
-  return h+'</select>';
-}
-function render(){
-  var ms=mains();
-  $('#nav').innerHTML=['home'].concat(ms).map(function(m){
-    var t=m==='home'?'首頁':(m.length>5?'幼兒園':m);
-    return '<button data-m="'+esc(m)+'"'+(st.main===m&&!st.q?' aria-current="true"':'')+'>'+esc(t)+'</button>';
-  }).join('');
-  var app=$('#app');
-  if(!A.length){app.innerHTML=loaded?empty('目前還沒有文章。'):empty('載入中…');return}
-  if(st.q){
-    var q=st.q.toLowerCase();
-    var r=A.filter(function(a){return [a.title,a.author,a.sub_category,a.main_category,a.content].join(' ').toLowerCase().indexOf(q)>=0});
-    app.innerHTML='<h2>搜尋「'+esc(st.q)+'」：'+r.length+' 筆</h2>'+(r.length?grid(r):empty('找不到相關內容，換個關鍵字試試。'));
-    return;
-  }
-  if(st.main==='home'){
-    var mine=lsGet('myClass'),sorted=A.slice().sort(function(a,b){return (b.publish_date||'').localeCompare(a.publish_date||'')}),h='';
-    var ml=mine?A.filter(function(a){return a.sub_category===mine}):[];
-    if(ml.length){
-      h+='<h2>我的班級：'+esc(mine)+'</h2>'+grid(ml.slice(0,6))+(ml.length>6?'<button class="lnk" data-go="'+esc(mine)+'">看全部 '+ml.length+' 篇</button>':'')+
-        '<div class="pick"><label for="mine">更換班級</label>'+pickHtml(mine)+'</div>';
-    }else{
-      h+='<div class="pick"><label for="mine">選擇班級，下次開啟直接看到</label>'+pickHtml('')+'</div>';
-    }
-    h+='<h2>最新動態</h2>'+grid(sorted.slice(0,feedN))+(sorted.length>feedN?'<p style="text-align:center"><button class="lnk" id="more">看更多</button></p>':'');
-    app.innerHTML=h;
-    return;
-  }
-  var subs=subsOf(st.main),list=A.filter(function(a){return a.main_category===st.main&&(!st.sub||a.sub_category===st.sub)});
-  var chip=function(v,t){return '<button data-s="'+esc(v)+'" aria-pressed="'+(st.sub===v)+'">'+esc(t)+'</button>'};
-  app.innerHTML='<div class="chips">'+chip('','全部')+subs.map(function(s){return chip(s,s)}).join('')+'</div>'+(list.length?grid(list):empty('這個分類目前還沒有內容。'));
-}
+var tint=a=>{var s=String(a.id),h=0;for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))%5;return TINTS[h]};
+var dsort=l=>l.slice().sort((a,b)=>(b.publish_date||'').localeCompare(a.publish_date||''));
+var byline=a=>[a.author?'作者 '+esc(a.author):'',esc(a.publish_date)].filter(Boolean).join('　');
 
-/* ---------- 文章頁（全螢幕，返回鍵/手勢會回到列表） ---------- */
+function hero(a){
+  var m=media(a.gallery)[0];
+  return '<a class="hero" href="#/a/'+esc(a.id)+'" data-id="'+esc(a.id)+'"><img src="'+(m.mid||m.thumb)+'" alt="" fetchpriority="high"><div class="sh"><span class="tg">'+esc(a.sub_category||a.main_category)+'</span><h2>'+esc(a.title||'（未命名）')+'</h2><small>'+byline(a)+'</small></div></a>';
+}
+function card(a,i){
+  var m=media(a.gallery)[0],tag='<span class="tg">'+esc(a.sub_category||a.main_category)+'</span>',t=esc(a.title||'（未命名）'),h='#/a/'+esc(a.id);
+  if(!m)return '<a class="c t" href="'+h+'" data-id="'+esc(a.id)+'" style="background:'+tint(a)+'">'+tag+'<b>'+t+'</b><small>'+byline(a)+'</small></a>';
+  return '<a class="c" href="'+h+'" data-id="'+esc(a.id)+'"><div class="im" style="aspect-ratio:'+RATIO[i%3]+'"><img loading="lazy" decoding="async" src="'+m.thumb+'" alt="">'+(m.yt?'<i class="pl">▶</i>':'')+'</div><div class="tx">'+tag+'<b>'+t+'</b><small>'+byline(a)+'</small></div></a>';
+}
+var mas=l=>'<div class="mas">'+l.map(card).join('')+'</div>';
+var empty=t=>'<p class="empty">'+t+'</p>';
+var mast=(t,p)=>'<div class="mast"><h1>'+t+'</h1>'+(p?'<p>'+p+'</p>':'')+'</div>';
+
+function render(){
+  var sv=!$('#sv').hidden;
+  document.querySelectorAll('#nav button').forEach(b=>b.setAttribute('aria-current',String(b.dataset.t===(sv?'search':st.tab))));
+  var app=$('#app');
+  if(!A.length){app.innerHTML=mast('香山國小<br>數位校刊')+empty(loaded?'目前還沒有文章。':'載入中…');return}
+  if(st.tab==='mine'){
+    var mine=lsGet('myClass'),sel='<select id="mine" aria-label="我的班級"><option value="">請選擇</option>';
+    mains().forEach(m=>{sel+='<optgroup label="'+esc(m)+'">'+subsOf(m).map(s=>'<option value="'+esc(s)+'"'+(s===mine?' selected':'')+'>'+esc(s)+'</option>').join('')+'</optgroup>'});
+    sel+='</select>';
+    var ml=mine?dsort(A.filter(a=>a.sub_category===mine)):[];
+    app.innerHTML=mast('我的班級',mine?esc(mine)+'：共 '+ml.length+' 篇':'選一次，下次直接看到')+'<div class="pick"><label for="mine">'+(mine?'更換班級':'請選擇你的班級')+'</label>'+sel+'</div>'+(ml.length?mas(ml):(mine?empty('這個班級目前還沒有內容。'):''));
+    return;
+  }
+  var ms=mains(),list=dsort(A.filter(a=>(!st.main||a.main_category===st.main)&&(!st.sub||a.sub_category===st.sub)));
+  var cover=list.filter(a=>media(a.gallery).length)[0],rest=list.filter(a=>a!==cover),shown=rest.slice(0,N);
+  var tabs=[''].concat(ms).map(m=>'<button data-m="'+esc(m)+'" aria-pressed="'+(st.main===m)+'">'+(m?esc(m.length>5?'幼兒園':m):'全部')+'</button>').join('');
+  var subs=st.main?[''].concat(subsOf(st.main)).map(s=>'<button data-s="'+esc(s)+'" aria-pressed="'+(st.sub===s)+'">'+(s?esc(s):'全部班級')+'</button>').join(''):'';
+  app.innerHTML=mast('香山國小<br>數位校刊','校園點滴，一起看')+'<div class="bar2"><div class="row mt">'+tabs+'</div>'+(subs?'<div class="row sbr">'+subs+'</div>':'')+'</div>'+
+    (cover?hero(cover):'')+(shown.length?mas(shown):(cover?'':empty('這個分類目前還沒有內容。')))+
+    (rest.length>N?'<button class="more" id="more">看更多</button>':'')+'<p class="adm"><a href="'+ADMIN+'" target="_blank" rel="noopener">教師後台</a></p>';
+}
+function results(){
+  var q=$('#q').value.trim().toLowerCase(),box=$('#sr');
+  if(!q){box.innerHTML=empty('輸入標題、作者或班級');return}
+  var r=dsort(A.filter(a=>[a.title,a.author,a.sub_category,a.main_category,a.content].join(' ').toLowerCase().indexOf(q)>=0));
+  box.innerHTML=(r.length?mas(r):empty('找不到相關內容，換個關鍵字試試。'));
+}
+function openSearch(){$('#sv').hidden=false;document.body.style.overflow='hidden';render();results();$('#q').focus()}
+function closeSearch(){$('#sv').hidden=true;$('#q').value='';if($('#art').hidden)document.body.style.overflow='';render()}
+
+/* ---------- 文章頁 ---------- */
 var baseTitle=document.title;
 function showArt(id){
-  var a=A.filter(function(x){return String(x.id)===id})[0];
+  var a=A.filter(x=>String(x.id)===id)[0];
   if(!a){if(loaded)closeArt();return}
   var ms=media(a.gallery),h=ms[0],rest=ms.slice(1),alt=esc(a.title||a.sub_category);
-  var lnk=function(m,cls,src){return '<a data-fancybox="g" href="'+m.full+'" class="'+cls+'"><img loading="lazy" decoding="async" src="'+src+'" alt="'+alt+'">'+(m.yt?'<i class="pl">▶</i>':'')+'</a>'};
-  var meta=[a.author?'作者 '+esc(a.author):'',esc(a.publish_date)].filter(Boolean).join('　');
+  var lnk=(m,src)=>'<a data-fancybox="g" href="'+m.full+'"><img loading="lazy" decoding="async" src="'+src+'" alt="'+alt+'">'+(m.yt?'<i class="pl">▶</i>':'')+'</a>';
   var el=$('#art');
-  el.innerHTML='<div class="bar"><button id="close" aria-label="返回">‹ 返回</button><button id="share">分享</button></div><article>'+
-    '<span class="tag">'+esc(a.sub_category||a.main_category)+'</span>'+(a.title?'<h2>'+esc(a.title)+'</h2>':'')+(meta?'<p class="meta">'+meta+'</p>':'')+
-    (h?lnk(h,'hero',h.mid||h.thumb):'')+(a.content?'<div class="body">'+esc(a.content)+'</div>':'')+
-    (rest.length?'<div class="thumbs">'+rest.map(function(m){return lnk(m,'t',m.thumb)}).join('')+'</div>':'')+'</article>';
+  el.innerHTML='<div class="ab"><button id="close" aria-label="返回">‹</button><button id="share" aria-label="分享">↗</button></div>'+
+    (h?'<a class="ah" data-fancybox="g" href="'+h.full+'"><img src="'+(h.mid||h.thumb)+'" alt="'+alt+'"></a>':'')+
+    '<article'+(h?'':' class="nh"')+'><span class="tg">'+esc(a.sub_category||a.main_category)+'</span>'+(a.title?'<h2>'+esc(a.title)+'</h2>':'')+(byline(a)?'<p class="meta">'+byline(a)+'</p>':'')+
+    (a.content?'<div class="body">'+esc(a.content)+'</div>':'')+(rest.length?'<div class="mg">'+rest.map(m=>lnk(m,m.thumb)).join('')+'</div>':'')+'</article>';
   el.hidden=false;el.scrollTop=0;document.body.style.overflow='hidden';
   document.title=(a.title||a.sub_category)+' - 香山國小數位校刊';
 }
-function hideArt(){$('#art').hidden=true;document.body.style.overflow='';document.title=baseTitle}
+function hideArt(){$('#art').hidden=true;if($('#sv').hidden)document.body.style.overflow='';document.title=baseTitle}
 function route(){var m=location.hash.match(/^#\/a\/([\w-]+)/);if(m)showArt(m[1]);else hideArt()}
 function openArt(id){history.pushState({n:1},'','#/a/'+id);route()}
 function closeArt(){
   if(history.state&&history.state.n)history.back();
   else{history.replaceState(null,'',location.pathname+location.search);route()}
 }
-function toast(t){var d=document.createElement('div');d.id='toast';d.textContent=t;document.body.appendChild(d);setTimeout(function(){d.remove()},2000)}
+function toast(t){var d=document.createElement('div');d.id='toast';d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),2000)}
 function share(){
   var t=document.title,u=location.href;
-  if(navigator.share)navigator.share({title:t,url:u}).catch(function(){});
-  else if(navigator.clipboard)navigator.clipboard.writeText(u).then(function(){toast('已複製連結')});
+  if(navigator.share)navigator.share({title:t,url:u}).catch(()=>{});
+  else if(navigator.clipboard)navigator.clipboard.writeText(u).then(()=>toast('已複製連結'));
 }
 
 /* ---------- 事件 ---------- */
-document.addEventListener('click',function(e){
-  var t=e.target.closest('[data-id],[data-m],[data-s],[data-go],#more,#close,#share');
+document.addEventListener('click',e=>{
+  var t=e.target.closest('[data-id],[data-t],[data-m],[data-s],#more,#close,#share,#sx');
   if(!t)return;
   if(t.dataset.id!=null){if(e.metaKey||e.ctrlKey||e.button)return;e.preventDefault();openArt(t.dataset.id);return}
   if(t.id==='close')return closeArt();
   if(t.id==='share')return share();
-  if(t.id==='more'){feedN+=12;return render()}
-  if(t.dataset.m!=null){st.main=t.dataset.m;st.sub='';st.q='';$('#q').value='';$('#sp').hidden=true}
-  else if(t.dataset.s!=null){st.sub=t.dataset.s}
-  else if(t.dataset.go!=null){
-    var s=t.dataset.go,a=A.filter(function(x){return x.sub_category===s})[0];
-    if(a){st.main=a.main_category;st.sub=s}
-  }
-  render();window.scrollTo(0,0);
+  if(t.id==='sx')return closeSearch();
+  if(t.id==='more'){N+=20;return render()}
+  if(t.dataset.t!=null){
+    if(t.dataset.t==='search')return openSearch();
+    $('#sv').hidden=true;$('#q').value='';document.body.style.overflow='';
+    st.tab=t.dataset.t;
+  }else if(t.dataset.m!=null){st.main=t.dataset.m;st.sub='';N=20}
+  else if(t.dataset.s!=null){st.sub=t.dataset.s;N=20}
+  render();
+  if(t.dataset.t!=null)window.scrollTo(0,0);
 });
-document.addEventListener('change',function(e){
+document.addEventListener('change',e=>{
   if(e.target.id==='mine'){
     if(e.target.value)lsSet('myClass',e.target.value);else try{localStorage.removeItem('myClass')}catch(x){}
     render();
   }
 });
-function closeSearch(){$('#sp').hidden=true;$('#q').value='';if(st.q){st.q='';render()}}
-$('#sbtn').addEventListener('click',function(){var p=$('#sp');if(p.hidden){p.hidden=false;$('#q').focus()}else closeSearch()});
-$('#sx').addEventListener('click',closeSearch);
-var qt;$('#q').addEventListener('input',function(e){clearTimeout(qt);qt=setTimeout(function(){st.q=e.target.value.trim();render()},200)});
+var qt;$('#q').addEventListener('input',()=>{clearTimeout(qt);qt=setTimeout(results,200)});
 addEventListener('popstate',route);
-addEventListener('load',function(){if(window.Fancybox)Fancybox.bind('[data-fancybox]',{Hash:false})});
+addEventListener('load',()=>{if(window.Fancybox)Fancybox.bind('[data-fancybox]',{Hash:false})});
 
-/* ---------- 載入：先顯示上次的快取，背景更新 ---------- */
-var cached=lsGet('xs_v2');
-if(cached&&cached.a){A=cached.a;C=cached.c||C;loaded=true;render();route()}
-Promise.all([
-  fetch(API).then(function(r){return r.json()}),
-  fetch(CATAPI).then(function(r){return r.json()}).catch(function(){return null})
-]).then(function(res){
-  if(!Array.isArray(res[0]))throw new Error('bad data');
-  A=res[0];if(res[1]&&res[1].order)C=res[1];
-  loaded=true;lsSet('xs_v2',{a:A,c:C});render();route();
-}).catch(function(){
-  if(!A.length)$('#app').innerHTML=empty('載入失敗，請確認網路連線後重新整理。');
-});
+/* ---------- 載入：先顯示上次快取，背景更新 ---------- */
+(function(){
+  var c=lsGet('xs_v2');
+  if(c&&c.a){A=c.a;C=c.c||C;loaded=true}
+  render();route();
+  Promise.all([
+    fetch(API).then(r=>r.json()),
+    fetch(CATAPI).then(r=>r.json()).catch(()=>null)
+  ]).then(res=>{
+    if(!Array.isArray(res[0]))throw new Error('bad data');
+    A=res[0];if(res[1]&&res[1].order)C=res[1];
+    loaded=true;lsSet('xs_v2',{a:A,c:C});render();route();
+  }).catch(()=>{if(!A.length)$('#app').innerHTML=mast('香山國小<br>數位校刊')+empty('載入失敗，請確認網路連線後重新整理。')});
+})();
 </script>
 </body>
 </html>
