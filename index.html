@@ -30,8 +30,8 @@
     .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
     #article-modal, #modal-inner { overscroll-behavior: contain; }
     @media (max-width: 767px) {
-      #article-modal { padding: 0 !important; align-items: flex-end !important; }
-      #modal-inner { max-height: 92dvh !important; width: 100% !important; max-width: none !important; border-radius: 28px 28px 0 0 !important; }
+      #article-modal { padding: 12px !important; align-items: center !important; }
+      #modal-inner { max-height: 88dvh !important; width: 100% !important; max-width: none !important; border-radius: 28px !important; }
       #modal-inner > button[onclick^="closeModal"] { position: sticky !important; top: 10px; align-self: flex-end; margin: 10px 12px -50px 0; flex-shrink: 0; }
     }
     @media (hover: none) { .sub-cat-card:hover, .article-card:hover { transform: none !important; box-shadow: none !important; } }
@@ -310,25 +310,32 @@ window.addEventListener('scroll', function() {
         var card = document.createElement('div'); 
         var colors = ['bg-morandi-taupe', 'bg-morandi-pink', 'bg-morandi-pink', 'bg-morandi-taupe'];
         card.className = 'sub-cat-card backdrop-blur-md rounded-3xl py-6 px-2 md:py-8 md:px-4 shadow-sm border border-white/30 cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300 active:scale-95 flex items-center justify-center text-center ' + colors[index % 4] + ' hover:opacity-90';
-        var n = globalArticles.filter(function(a) { return a.main_category === currentMainCategory && a.sub_category === sub; }).length;
         var my = lsGet('xs_my'), isMy = my && my.main === currentMainCategory && my.sub === sub;
         card.style.position = 'relative';
-        card.innerHTML = '<div class="text-center"><h3 class="cat-name text-lg md:text-2xl lg:text-3xl font-bold text-white tracking-wider md:tracking-[0.2em] drop-shadow-sm">' + escapeHTML(sub) + '</h3><p class="text-white/85 text-xs md:text-sm font-medium mt-1 tracking-widest">' + n + ' 則</p></div>' + (isMy ? '<span class="absolute top-2 right-3 text-white text-lg" aria-label="我的班級">★</span>' : '');
+        card.innerHTML = '<div class="text-center"><h3 class="cat-name text-lg md:text-2xl lg:text-3xl font-bold text-white tracking-wider md:tracking-[0.2em] drop-shadow-sm">' + escapeHTML(sub) + '</h3></div>' + (isMy ? '<span class="absolute top-2 right-3 text-white text-lg" aria-label="我的班級">★</span>' : '');
         gridContainer.appendChild(card);
       });
     }
 
     // ---------- 媒體解析：只接受 Drive / YouTube；縮圖用小圖，大圖點開才載入 ----------
+    function splitGallery(g) {
+      var out = [];
+      String(g || '').split(/\n+/).forEach(function(line) {
+        (line.indexOf('|||') >= 0 ? [line] : line.split(',')).forEach(function(u) { u = u.trim(); if (u) out.push(u); });
+      });
+      return out;
+    }
     function parseMediaItem(rawItem) {
       if (!rawItem || typeof rawItem !== 'string') return null;
-      var url = rawItem.split('|||')[0].trim();
+      var parts = rawItem.split('|||'), url = parts[0].trim();
+      var caption = parts.length > 1 ? escapeHTML(parts.slice(1).join(' ').trim()) : '';
       if (!url) return null;
       var yt = url.match(/youtu(?:\.be\/|be\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|v\/))([\w-]{11})/);
-      if (yt) return { type: 'youtube', embedUrl: 'https://www.youtube.com/embed/' + yt[1] + '?rel=0&playsinline=0&fs=1', thumbUrl: 'https://img.youtube.com/vi/' + yt[1] + '/hqdefault.jpg', caption: '' };
+      if (yt) return { type: 'youtube', embedUrl: 'https://www.youtube.com/embed/' + yt[1] + '?rel=0&playsinline=0&fs=1', thumbUrl: 'https://img.youtube.com/vi/' + yt[1] + '/hqdefault.jpg', caption: caption };
       var dr = url.match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?(?:.*&)?id=)([\w-]{10,})/);
       if (!dr) return null;
       var base = 'https://lh3.googleusercontent.com/d/' + dr[1];
-      return { type: 'image', url: base + '=w1600', midUrl: base + '=w900', thumbUrl: base + '=w400', caption: '' };
+      return { type: 'image', url: base + '=w1600', midUrl: base + '=w900', thumbUrl: base + '=w400', caption: caption };
     }
 
     // ---------- 導覽狀態 ----------
@@ -495,7 +502,7 @@ window.addEventListener('scroll', function() {
         
         var mediaList = [];
         if (article.gallery) {
-          var items = String(article.gallery).split(/[\n,]+/).map(function(u) { return u.trim(); }).filter(function(u) { return u; });
+          var items = splitGallery(article.gallery);
           items.forEach(function(item) { 
             var parsed = parseMediaItem(item); 
             if (parsed) mediaList.push(parsed); 
@@ -577,7 +584,7 @@ window.addEventListener('scroll', function() {
       var metaBox = document.getElementById('modal-meta-box');
       if (!dateStr) { metaBox.style.display = 'none'; } else { metaBox.style.display = 'flex'; }
       
-      var safeContent = escapeHTML(article.content || '').trim();
+      var safeContent = escapeHTML(article.content || '').replace(/^(?:[ \t]*\n)+/, '').replace(/\s+$/, '');
       var hasContent = !!safeContent;
       var contentEl = document.getElementById('modal-content');
       if (hasContent) {
@@ -589,7 +596,7 @@ window.addEventListener('scroll', function() {
       
       var mediaItems = [];
       if (article.gallery) {
-        var items = String(article.gallery).split(/[\n,]+/).map(function(u) { return u.trim(); }).filter(function(u) { return u; });
+        var items = splitGallery(article.gallery);
         items.forEach(function(item) {
           var parsed = parseMediaItem(item);
           if (parsed) mediaItems.push(parsed);
