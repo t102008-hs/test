@@ -25,7 +25,7 @@
     .article-content { white-space: pre-wrap; }
     ::-webkit-scrollbar { display: none; }
     .hide-scroll-x { overflow-x: auto; -ms-overflow-style: none; scrollbar-width: none; }
-    body.modal-open { overflow: hidden; }
+    body.modal-open { position: fixed; width: 100%; overflow: hidden; }
     .pb-safe { padding-bottom: env(safe-area-inset-bottom, 16px); }
     .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
     #article-modal, #modal-inner { overscroll-behavior: contain; }
@@ -557,6 +557,21 @@ window.addEventListener('scroll', function() {
 // ==========================================
     // 3. 閱讀彈窗 (智慧判斷：依據有無內文決定版型，無內文時完美同行)
     // ==========================================
+    var lockY = 0;
+    function lockBody() {
+      if (document.body.classList.contains('modal-open')) return;
+      lockY = window.pageYOffset || 0;
+      document.body.style.top = '-' + lockY + 'px';
+      document.body.classList.add('modal-open');
+    }
+    function unlockBody() {
+      if (!document.body.classList.contains('modal-open')) return;
+      document.body.classList.remove('modal-open');
+      document.body.style.top = '';
+      window.scrollTo(0, lockY);
+      var h = document.getElementById('top-header');
+      if (h) { h.style.transform = 'translateZ(0)'; requestAnimationFrame(function() { h.style.transform = ''; }); }
+    }
     function openModal(articleId) {
       var article = globalArticles.find(function(a) { return String(a.id) === String(articleId); }); 
       if(!article) return;
@@ -700,8 +715,9 @@ window.addEventListener('scroll', function() {
       }
       
       var modal = document.getElementById('article-modal'); 
-      modal.style.display = 'flex'; 
-      document.body.classList.add('modal-open');
+      modal.style.display = 'flex';
+      modal.style.pointerEvents = ''; 
+      lockBody();
       setTimeout(function() { 
         modal.classList.remove('opacity-0'); 
         var box = document.getElementById('modal-inner');
@@ -714,7 +730,8 @@ window.addEventListener('scroll', function() {
     // 升級版：關閉彈窗 (結合平滑縮小動畫)
     // ==========================================
     function closeModal(isFromPopState) {
-      var modal = document.getElementById('article-modal'); 
+      var modal = document.getElementById('article-modal');
+      modal.style.pointerEvents = 'none'; 
       var box = document.getElementById('modal-inner');
       
       modal.classList.add('opacity-0'); 
@@ -722,7 +739,7 @@ window.addEventListener('scroll', function() {
       
       setTimeout(function() { 
         modal.style.display = 'none'; 
-        document.body.classList.remove('modal-open'); 
+        unlockBody(); 
         
         // 清除背景 iframe 防止影片繼續出聲
         var iframes = document.getElementsByTagName('iframe');
