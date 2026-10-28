@@ -448,7 +448,7 @@ window.addEventListener('scroll', function() {
       
       var safeContent = escapeHTML(article.content || '').replace(/^(?:[ \t]*\n)+/, '').replace(/\s+$/, '');
       var hasContent = !!safeContent;
-      document.getElementById('fs-group').style.display = hasContent ? 'flex' : 'none';
+      document.getElementById('modal-tools').style.display = hasContent ? 'flex' : 'none';
       var contentEl = document.getElementById('modal-content');
       if (hasContent) {
           contentEl.innerHTML = renderParagraphs(article.content || '');
@@ -625,24 +625,10 @@ window.addEventListener('scroll', function() {
       document.querySelectorAll('.fs-btn').forEach(function(b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-fs') === n)); });
       try { localStorage.setItem('xs_fs', n); } catch (e) {}
     }
-    function toastMsg(t) {
-      var d = document.createElement('div');
-      d.className = 'fixed left-1/2 -translate-x-1/2 bottom-24 bg-morandi-dark text-white px-5 py-2.5 rounded-full z-[200] shadow-lg';
-      d.textContent = t; document.body.appendChild(d);
-      setTimeout(function() { d.remove(); }, 2000);
-    }
-    function shareArticle() {
-      if (!currentArticleId) return;
-      var a = globalArticles.filter(function(x) { return String(x.id) === String(currentArticleId); })[0];
-      var url = location.origin + '/s/' + encodeURIComponent(currentArticleId);
-      var title = (a && (a.title || a.sub_category) ? (a.title || a.sub_category) + ' - ' : '') + '香山國小數位校刊';
-      if (navigator.share) navigator.share({ title: title, url: url }).catch(function() {});
-      else if (navigator.clipboard) navigator.clipboard.writeText(url).then(function() { toastMsg('已複製連結'); });
-    }
-    document.addEventListener('click', function(e) {
-      var b = e.target.closest('.fs-btn,#btn-modal-share');
+            document.addEventListener('click', function(e) {
+      var b = e.target.closest('.fs-btn');
       if (!b) return;
-      if (b.id === 'btn-modal-share') shareArticle(); else applyFs(b.getAttribute('data-fs'));
+      applyFs(b.getAttribute('data-fs'));
     });
     document.getElementById('btn-modal-close').addEventListener('click', function() { closeModal(); });
     document.addEventListener('error', function(e) { var el = e.target; if (el && el.tagName === 'IMG') el.style.display = 'none'; }, true);
