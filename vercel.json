@@ -2,12 +2,6 @@
   "framework": null,
   "buildCommand": "npm run build",
   "outputDirectory": "public",
-  "rewrites": [
-    {
-      "source": "/s/:id",
-      "destination": "/api/share?id=:id"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
