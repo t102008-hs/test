@@ -22,5 +22,9 @@
 #modal-content { font-size: 1.0625rem; }
 html[data-fs="1"] #modal-content { font-size: 1.25rem; }
 html[data-fs="2"] #modal-content { font-size: 1.5rem; }
-.fs-btn { min-width: 40px; min-height: 36px; padding: 0 10px; border-radius: 999px; background: #F3F4F6; color: #4B5563; font-weight: 700; }
-.fs-btn[aria-pressed="true"] { background: #7A635E; color: #fff; }
+.fs-seg { display: inline-flex; gap: 2px; padding: 3px; border-radius: 999px; background: rgba(122, 99, 94, 0.10); }
+.fs-btn { min-width: 38px; height: 32px; border-radius: 999px; color: #8a7873; font-weight: 700; line-height: 1; display: inline-flex; align-items: center; justify-content: center; transition: background .2s, color .2s, box-shadow .2s; }
+.fs-btn[data-fs="0"] { font-size: 12px; }
+.fs-btn[data-fs="1"] { font-size: 15px; }
+.fs-btn[data-fs="2"] { font-size: 19px; }
+.fs-btn[aria-pressed="true"] { background: #fff; color: #7A635E; box-shadow: 0 1px 3px rgba(60, 40, 35, 0.20); }
